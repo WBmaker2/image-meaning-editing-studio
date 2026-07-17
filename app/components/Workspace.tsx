@@ -38,6 +38,7 @@ export function Workspace({ learningCase, onExit, onSave, onReadingHelp }: Works
   const [feedback, setFeedback] = useState("");
   const [success, setSuccess] = useState(false);
   const [comparePresetId, setComparePresetId] = useState<string | null>(null);
+  const [observedObjects, setObservedObjects] = useState<string[]>([]);
 
   const preset = useMemo(() => learningCase.presets.find((item) => item.id === selectedPresetId) ?? learningCase.presets[0], [learningCase, selectedPresetId]);
   const comparisonPreset = learningCase.presets.find((item) => item.id === comparePresetId);
@@ -56,6 +57,12 @@ export function Workspace({ learningCase, onExit, onSave, onReadingHelp }: Works
     setChanges((current) => current.includes(id) ? current.filter((item) => item !== id) : [...current, id]);
     setFeedback(""); setSuccess(false);
   };
+
+  const toggleObservedObject = (object: string) => {
+    setObservedObjects((current) => current.includes(object) ? current.filter((item) => item !== object) : [...current, object]);
+  };
+
+  const observationComplete = observedObjects.length === learningCase.objects.length;
 
   const checkAnswer = () => {
     if (!changes.length || !effect || !evidence || !confidence) {
@@ -121,10 +128,14 @@ export function Workspace({ learningCase, onExit, onSave, onReadingHelp }: Works
           </div>
           <aside className="panel observation-panel">
             <p className="panel-kicker">화면 단서</p><h2>보이는 것을 하나씩 확인해요</h2>
-            <ul className="object-list">{learningCase.objects.map((object, index) => <li key={object}><span>{String(index + 1).padStart(2, "0")}</span>{object}<i>보여요</i></li>)}</ul>
+            <p className="observation-progress" aria-live="polite"><strong>{observedObjects.length} / {learningCase.objects.length}</strong> 화면에서 찾았어요</p>
+            <ul className="object-list">{learningCase.objects.map((object, index) => {
+              const observed = observedObjects.includes(object);
+              return <li key={object} className={observed ? "observed" : ""}><span>{String(index + 1).padStart(2, "0")}</span><label><input type="checkbox" checked={observed} onChange={() => toggleObservedObject(object)} /><i aria-hidden="true">✓</i>{object}</label><b>{observed ? "확인했어요" : "찾아보기"}</b></li>;
+            })}</ul>
             <details className="description-details"><summary>장면을 글로 자세히 읽기</summary><p>{learningCase.longDescription}</p></details>
             <div className="concept-note"><strong>기억해요</strong><p>기준 이미지도 선택된 순간과 범위를 보여 줘요. 화면 밖의 모든 상황까지 알 수 있는 것은 아니에요.</p></div>
-            <button className="primary-button full-button" onClick={() => setPhase("edit")}>기준 관찰을 마쳤어요 →</button>
+            <button className="primary-button full-button" disabled={!observationComplete} onClick={() => setPhase("edit")}>{observationComplete ? "기준 관찰을 마쳤어요 →" : `화면 단서 ${learningCase.objects.length - observedObjects.length}개를 더 찾아요`}</button>
           </aside>
         </section>
       )}

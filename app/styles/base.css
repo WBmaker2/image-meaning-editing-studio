@@ -38,6 +38,7 @@ h1, h2, h3, strong { letter-spacing: -.025em; }
 .primary-button, .secondary-button { min-height: 52px; border-radius: 12px; padding: 13px 22px; font-weight: 800; cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, background .18s ease; }
 .primary-button { border: 1px solid var(--teal-dark); color: white; background: var(--teal); box-shadow: 0 5px 0 var(--teal-dark); }
 .primary-button:hover { transform: translateY(-2px); box-shadow: 0 7px 0 var(--teal-dark); }
+.primary-button:disabled { cursor: not-allowed; color: #6f7c76; background: #dfe4e1; border-color: #c7cfcb; box-shadow: 0 4px 0 #b8c1bd; transform: none; }
 .secondary-button { border: 1px solid var(--line); background: var(--white); box-shadow: 0 3px 0 #c8cec6; }
 .secondary-button:hover { border-color: var(--teal); color: var(--teal-dark); }
 .full-button { width: 100%; }
