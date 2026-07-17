@@ -28,6 +28,9 @@ test("프라이버시와 학습 범위 계약을 코드에 유지한다", async 
   assert.doesNotMatch(studio + workspace, /localStorage|sessionStorage|indexedDB|type=["']file["']/i);
   assert.match(studio, /업로드 · 다운로드 · 광고 · 추적 없음/);
   assert.match(workspace, /화면에서 달라진 것을 모두 골라요/);
+  assert.match(workspace, /observedObjects/);
+  assert.match(workspace, /disabled={!observationComplete}/);
+  assert.match(workspace, /화면 단서.*개를 더 찾아요/);
   assert.match(cases, /observable/);
   assert.match(cases, /plausible/);
   assert.match(cases, /overclaim/);
