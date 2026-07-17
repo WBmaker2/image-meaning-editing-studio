@@ -110,7 +110,7 @@ export function StudioApp() {
               return (
                 <article className={`case-card focus-${learningCase.number}`} key={learningCase.id}>
                   <div className="case-card-top"><span className="case-number">0{learningCase.number}</span><span className="focus-chip">{learningCase.focus}</span></div>
-                  <div className={`case-thumbnail thumb-${learningCase.scene}`} aria-hidden="true"><span>{learningCase.number === 1 ? "⌁" : learningCase.number === 2 ? "→" : learningCase.number === 3 ? "♧" : learningCase.number === 4 ? "✂" : "▤"}</span></div>
+                  <div className={`case-thumbnail thumb-${learningCase.scene}`} aria-hidden="true"><span className="thumb-illustration"><i /><i /><i /></span></div>
                   <h2>{learningCase.title}</h2><p>{learningCase.mission}</p>
                   <div className="case-card-bottom"><button onClick={() => openCase(learningCase)}>{complete ? "다시 살펴보기" : "사건 열기"} <span>→</span></button>{complete && <span className="complete-mark">✓ 기록됨</span>}</div>
                 </article>
