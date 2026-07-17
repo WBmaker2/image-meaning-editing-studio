@@ -11,6 +11,15 @@ export function InfoDialog({ type, onClose }: DialogProps) {
       body: (
         <>
           <div className="update-entry">
+            <div className="update-meta"><strong>v0.3.0</strong><span>2026.07.18</span></div>
+            <h3>학생이 더 쉽게 읽고 비교해요</h3>
+            <ul>
+              <li>어려운 학습 용어를 초등학생이 이해하기 쉬운 말로 바꿨어요.</li>
+              <li>휴대폰에서는 처음 이미지와 바꾼 이미지를 한 장씩 비교해요.</li>
+              <li>빠뜨린 답의 번호를 알려 주고 키보드 초점 표시를 또렷하게 했어요.</li>
+            </ul>
+          </div>
+          <div className="update-entry">
             <div className="update-meta"><strong>v0.2.0</strong><span>2026.07.17</span></div>
             <h3>직접 관찰하고 더 정확하게 구분해요</h3>
             <ul>
@@ -23,7 +32,7 @@ export function InfoDialog({ type, onClose }: DialogProps) {
             <div className="update-meta"><strong>v0.1.0</strong><span>2026.07.17</span></div>
             <h3>첫 번째 학습실을 열었어요</h3>
             <ul>
-              <li>자르기·배치·문구·색·종합 편집 사건 5개를 만들었어요.</li>
+              <li>자르기·자리·글·색을 바꾸는 사건 5개를 만들었어요.</li>
               <li>화면에서 바로 확인할 것과 가능한 느낌을 구분해요.</li>
               <li>실제 친구 사진은 올리지 않고 준비된 학습 장면만 사용해요.</li>
             </ul>
