@@ -1,11 +1,20 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useSyncExternalStore } from "react";
 import { CONFIDENCE_CHOICES, findChoice, type Confidence, type LearningCase } from "../data/cases";
 import { SceneIllustration } from "./SceneIllustration";
 
 type Phase = "observe" | "edit" | "analyze" | "result";
 type ViewMode = "side" | "alternate";
+
+const MOBILE_QUERY = "(max-width: 600px)";
+const subscribeToMobile = (onChange: () => void) => {
+  const media = window.matchMedia(MOBILE_QUERY);
+  media.addEventListener("change", onChange);
+  return () => media.removeEventListener("change", onChange);
+};
+const getIsMobile = () => window.matchMedia(MOBILE_QUERY).matches;
+const getServerIsMobile = () => false;
 
 export interface ReportEntry {
   caseId: string;
@@ -29,8 +38,8 @@ interface WorkspaceProps {
 export function Workspace({ learningCase, onExit, onSave, onReadingHelp }: WorkspaceProps) {
   const initialPreset = learningCase.presets[1] ?? learningCase.presets[0];
   const [phase, setPhase] = useState<Phase>("observe");
-  const [viewMode, setViewMode] = useState<ViewMode>("side");
-  const [showEdited, setShowEdited] = useState(true);
+  const [chosenViewMode, setChosenViewMode] = useState<ViewMode | null>(null);
+  const [showEdited, setShowEdited] = useState(false);
   const [selectedPresetId, setSelectedPresetId] = useState(initialPreset.id);
   const [changes, setChanges] = useState<string[]>([]);
   const [effect, setEffect] = useState<string | null>(null);
@@ -44,6 +53,8 @@ export function Workspace({ learningCase, onExit, onSave, onReadingHelp }: Works
   const preset = useMemo(() => learningCase.presets.find((item) => item.id === selectedPresetId) ?? learningCase.presets[0], [learningCase, selectedPresetId]);
   const comparisonPreset = learningCase.presets.find((item) => item.id === comparePresetId);
   const phaseNumber = { observe: 1, edit: 2, analyze: 3, result: 4 }[phase];
+  const isMobile = useSyncExternalStore(subscribeToMobile, getIsMobile, getServerIsMobile);
+  const viewMode = chosenViewMode ?? (isMobile ? "alternate" : "side");
 
   const resetAnalysis = () => {
     setChanges([]); setEffect(null); setEvidence(null); setConfidence(null); setFeedback(""); setSuccess(false);
@@ -144,7 +155,7 @@ export function Workspace({ learningCase, onExit, onSave, onReadingHelp }: Works
       {phase !== "observe" && (
         <>
           <div className="comparison-toolbar">
-            <div className="segmented-control" role="group" aria-label="이미지 비교 방법"><button className={viewMode === "side" ? "active" : ""} onClick={() => setViewMode("side")}>▥ 나란히 보기</button><button className={viewMode === "alternate" ? "active" : ""} onClick={() => setViewMode("alternate")}>◫ 한 장씩 보기</button></div>
+            <div className="segmented-control" role="group" aria-label="이미지 비교 방법"><button className={viewMode === "side" ? "active" : ""} onClick={() => setChosenViewMode("side")}>▥ 나란히 보기</button><button className={viewMode === "alternate" ? "active" : ""} onClick={() => setChosenViewMode("alternate")}>◫ 한 장씩 보기</button></div>
             {viewMode === "alternate" && <button className="swap-button" onClick={() => setShowEdited((shown) => !shown)} aria-live="polite">지금: {showEdited ? "바꾼 이미지" : "처음 이미지"} · 다른 그림 보기</button>}
           </div>
           <section className={`comparison-grid mode-${viewMode}`}>
