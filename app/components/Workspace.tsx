@@ -27,10 +27,11 @@ interface WorkspaceProps {
 }
 
 export function Workspace({ learningCase, onExit, onSave, onReadingHelp }: WorkspaceProps) {
+  const initialPreset = learningCase.presets[1] ?? learningCase.presets[0];
   const [phase, setPhase] = useState<Phase>("observe");
   const [viewMode, setViewMode] = useState<ViewMode>("side");
   const [showEdited, setShowEdited] = useState(true);
-  const [selectedPresetId, setSelectedPresetId] = useState(learningCase.presets[0].id);
+  const [selectedPresetId, setSelectedPresetId] = useState(initialPreset.id);
   const [changes, setChanges] = useState<string[]>([]);
   const [effect, setEffect] = useState<string | null>(null);
   const [evidence, setEvidence] = useState<string | null>(null);
