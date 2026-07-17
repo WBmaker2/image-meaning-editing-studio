@@ -77,7 +77,7 @@ export function Workspace({ learningCase, onExit, onSave, onReadingHelp }: Works
     const changeOkay = changes.some((id) => preset.acceptedChanges.includes(id));
     const effectOkay = preset.acceptedEffects.includes(effect);
     const evidenceOkay = preset.acceptedEvidence.includes(evidence);
-    const confidenceOkay = confidence === preset.confidence || (preset.confidence === "plausible" && confidence === "observable" && effectOkay);
+    const confidenceOkay = confidence === preset.confidence;
 
     if (!changeOkay) setFeedback("기준 이미지와 편집본에서 크기·위치·문구·색 중 실제로 달라진 부분을 다시 살펴봐요.");
     else if (!effectOkay) setFeedback("찾은 변화와 이어지는 효과를 다시 골라 보세요. 같은 편집에서도 타당한 효과는 둘 이상일 수 있어요.");
