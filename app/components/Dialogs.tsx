@@ -49,9 +49,9 @@ export function InfoDialog({ type, onClose }: DialogProps) {
       title: "이미지 읽기 방법",
       body: (
         <ol className="reading-steps">
-          <li><strong>무엇이 바뀌었나요?</strong><span>자른 범위, 크기, 자리, 문구, 색을 찾아요.</span></li>
+          <li><strong>무엇이 바뀌었나요?</strong><span>자른 범위, 크기, 자리, 글, 색을 찾아요.</span></li>
           <li><strong>무엇이 먼저 보이나요?</strong><span>그렇게 본 까닭을 화면에서 하나 찾아요.</span></li>
-          <li><strong>어디까지 말할 수 있나요?</strong><span>직접 관찰과 가능한 느낌, 단정을 구분해요.</span></li>
+          <li><strong>어디까지 말할 수 있나요?</strong><span>직접 본 것, 느낀 것, 사실이라 말하기 어려운 것을 구분해요.</span></li>
         </ol>
       ),
     },

@@ -9,8 +9,8 @@ type Screen = "welcome" | "tutorial" | "cases" | "workspace" | "report";
 type DialogType = "updates" | "teacher" | "reading" | null;
 
 const TUTORIAL = [
-  { number: "01", title: "기준 이미지도 선택된 장면이에요", copy: "사진에는 찍은 위치와 순간, 화면 범위가 담겨요. 기준 이미지가 장면의 모든 맥락을 보여 주는 것은 아니에요.", symbol: "▣" },
-  { number: "02", title: "한 번에 하나씩 바꾸어 봐요", copy: "자르기·크기·문구·색을 하나씩 바꾸면 무엇이 전달 효과에 영향을 주었는지 비교하기 쉬워요.", symbol: "↔" },
+  { number: "01", title: "처음 이미지도 골라 보여 준 장면이에요", copy: "사진에는 찍은 자리와 순간, 보이는 범위가 담겨요. 처음 이미지도 주변의 모든 상황을 보여 주지는 않아요.", symbol: "▣" },
+  { number: "02", title: "한 번에 하나씩 바꾸어 봐요", copy: "자르기·크기·글·색을 하나씩 바꾸면 어떤 변화가 느낌과 뜻에 영향을 주었는지 비교하기 쉬워요.", symbol: "↔" },
   { number: "03", title: "보이는 것과 느낌을 구분해요", copy: "크기가 커진 것은 바로 확인할 수 있지만, 더 쓸쓸하다는 느낌은 사람마다 다를 수 있어요.", symbol: "◒" },
 ];
 
@@ -38,7 +38,7 @@ export function StudioApp() {
       <header className="topbar">
         <button className="brand" onClick={() => setScreen("welcome")} aria-label="이미지 의미 편집실 처음 화면">
           <span className="brand-mark"><i /><i /></span>
-          <span><strong>이미지 의미 편집실</strong><small>같은 이미지, 달라지는 전달 효과</small></span>
+          <span><strong>이미지 의미 편집실</strong><small>같은 이미지, 달라지는 느낌과 뜻</small></span>
         </button>
         <nav className="header-actions" aria-label="도움말">
           <button className="text-button" onClick={() => setDialog("teacher")}>교사용 안내</button>
@@ -51,7 +51,7 @@ export function StudioApp() {
           <section className="hero-copy">
             <p className="eyebrow"><span>국어 × 미술</span> 이미지 읽기 작업대</p>
             <h1>같은 이미지인데,<br /><em>왜 다르게 느껴질까요?</em></h1>
-            <p className="hero-description">자르는 범위, 크기와 자리, 문구와 색을 바꾸어 보세요. 무엇이 더 보이고 먼저 눈에 띄는지 화면 근거로 이야기해요.</p>
+            <p className="hero-description">자르는 범위, 크기와 자리, 글과 색을 바꾸어 보세요. 무엇이 더 보이고 먼저 눈에 띄는지 화면에서 까닭을 찾아 이야기해요.</p>
             <div className="hero-actions">
               <button className="primary-button" onClick={() => setScreen("tutorial")}>편집 실험 시작하기 <span>→</span></button>
               <button className="secondary-button" onClick={() => setScreen("cases")}>사건 먼저 둘러보기</button>
@@ -77,7 +77,7 @@ export function StudioApp() {
 
       {screen === "tutorial" && (
         <main className="tutorial-screen">
-          <div className="tutorial-header"><p className="eyebrow">시작 전 3분 안내</p><h1>이미지를 읽는 세 가지 약속</h1><p>정답을 빨리 찾기보다 화면에서 까닭을 찾는 연습이에요.</p></div>
+          <div className="tutorial-header"><p className="eyebrow">시작 전 짧은 안내</p><h1>이미지를 읽는 세 가지 약속</h1><p>정답을 빨리 찾기보다 화면에서 까닭을 찾는 연습이에요.</p></div>
           <section className="tutorial-card">
             <div className="tutorial-progress" aria-label={`3단계 중 ${tutorialStep + 1}단계`}>{TUTORIAL.map((_, index) => <span key={index} className={index <= tutorialStep ? "active" : ""} />)}</div>
             <div className="tutorial-symbol" aria-hidden="true">{TUTORIAL[tutorialStep].symbol}</div>
@@ -86,8 +86,8 @@ export function StudioApp() {
             <p>{TUTORIAL[tutorialStep].copy}</p>
             <div className="tutorial-example">
               {tutorialStep === 0 && <><b>넓은 장면</b><span>장소와 주변 단서가 보여요.</span><b>가까운 장면</b><span>대상은 커지지만 주변은 줄어요.</span></>}
-              {tutorialStep === 1 && <><b>이번 실험</b><span>자르기만 바꾸기</span><b>그대로 두기</b><span>문구·색·장면</span></>}
-              {tutorialStep === 2 && <><b>바로 확인</b><span>“벤치가 커졌어요.”</span><b>가능한 느낌</b><span>“조용하게 느낄 수 있어요.”</span><b>단정 어려움</b><span>“모두가 운동을 싫어해요.”</span></>}
+              {tutorialStep === 1 && <><b>이번 실험</b><span>자르기만 바꾸기</span><b>그대로 두기</b><span>글·색·장면</span></>}
+              {tutorialStep === 2 && <><b>바로 확인</b><span>“벤치가 커졌어요.”</span><b>가능한 느낌</b><span>“조용하게 느낄 수 있어요.”</span><b>사실이라 말하기 어려움</b><span>“모두가 운동을 싫어해요.”</span></>}
             </div>
             <div className="tutorial-actions">
               <button className="secondary-button" onClick={() => tutorialStep === 0 ? setScreen("welcome") : setTutorialStep((step) => step - 1)}>이전</button>
@@ -101,7 +101,7 @@ export function StudioApp() {
       {screen === "cases" && (
         <main className="case-screen">
           <section className="case-heading">
-            <div><p className="eyebrow">편집 사건 보관함</p><h1>어떤 변화를 살펴볼까요?</h1><p>사건은 순서대로 해도 되고, 궁금한 편집 요소부터 골라도 돼요.</p></div>
+            <div><p className="eyebrow">편집 사건 보관함</p><h1>어떤 변화를 살펴볼까요?</h1><p>사건은 순서대로 해도 되고, 궁금한 바꾸기 방법부터 골라도 돼요.</p></div>
             <div className="record-counter"><strong>{reports.length}</strong><span>/ {CASES.length} 사건 기록</span></div>
           </section>
           <div className="case-grid">
@@ -125,11 +125,11 @@ export function StudioApp() {
 
       {screen === "report" && (
         <main className="report-screen">
-          <div className="report-heading"><p className="eyebrow">점수가 아닌 생각의 기록</p><h1>나의 이미지 의미 비교 기록</h1><p>편집으로 달라진 것과 화면에서 찾은 근거를 모았어요.</p></div>
+          <div className="report-heading"><p className="eyebrow">점수가 아닌 생각의 기록</p><h1>나의 이미지 비교 기록</h1><p>편집으로 달라진 것과 화면에서 찾은 까닭을 모았어요.</p></div>
           <div className="report-list">
-            {reports.map((entry) => <article className="report-entry" key={entry.caseId}><div><span>사건 0{entry.caseNumber}</span><strong>{entry.caseTitle}</strong></div><dl><dt>고른 편집</dt><dd>{entry.presetLabel}</dd><dt>화면에서 찾은 변화</dt><dd>{entry.changeLabels.join(" · ")}</dd><dt>가능한 효과</dt><dd>{entry.effectLabel}</dd><dt>나의 화면 근거</dt><dd>{entry.evidenceLabel}</dd><dt>말할 수 있는 범위</dt><dd>{entry.confidenceLabel}</dd></dl><p>{entry.caution}</p></article>)}
+            {reports.map((entry) => <article className="report-entry" key={entry.caseId}><div><span>사건 0{entry.caseNumber}</span><strong>{entry.caseTitle}</strong></div><dl><dt>고른 편집</dt><dd>{entry.presetLabel}</dd><dt>화면에서 찾은 변화</dt><dd>{entry.changeLabels.join(" · ")}</dd><dt>생길 수 있는 느낌과 뜻</dt><dd>{entry.effectLabel}</dd><dt>화면에서 찾은 까닭</dt><dd>{entry.evidenceLabel}</dd><dt>말할 수 있는 범위</dt><dd>{entry.confidenceLabel}</dd></dl><p>{entry.caution}</p></article>)}
           </div>
-          <div className="report-reminder"><strong>기억해요</strong><p>표현이 달라진 것과 장면의 사실이 달라진 것은 같지 않아요. 느낌에는 여러 답이 있을 수 있으니 화면 근거를 함께 말해요.</p></div>
+          <div className="report-reminder"><strong>기억해요</strong><p>보여 주는 방법이 달라진 것과 실제 장면이 달라진 것은 같지 않아요. 느낌에는 여러 답이 있을 수 있으니 화면에서 찾은 까닭을 함께 말해요.</p></div>
           <button className="primary-button" onClick={() => setScreen("cases")}>다른 사건 살펴보기</button>
         </main>
       )}
