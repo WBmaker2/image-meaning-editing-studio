@@ -77,8 +77,13 @@ export function Workspace({ learningCase, onExit, onSave, onReadingHelp }: Works
   const observationComplete = observedObjects.length === learningCase.objects.length;
 
   const checkAnswer = () => {
+    const missingAnswers: string[] = [];
+    if (!changes.length) missingAnswers.push("1번 달라진 점");
+    if (!effect) missingAnswers.push("2번 느낌과 뜻");
+    if (!evidence) missingAnswers.push("3번 화면 속 까닭");
+    if (!confidence) missingAnswers.push("4번 말할 수 있는 범위");
     if (!changes.length || !effect || !evidence || !confidence) {
-      setFeedback("아직 고르지 않은 항목이 있어요. 변화·효과·근거·말할 수 있는 범위를 모두 살펴봐요.");
+      setFeedback(`아직 고르지 않은 곳: ${missingAnswers.join(" · ")}. 위에서부터 하나씩 골라 보세요.`);
       return;
     }
     if (preset.blocksCompletion) {
