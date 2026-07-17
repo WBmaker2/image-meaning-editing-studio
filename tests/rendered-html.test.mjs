@@ -33,6 +33,8 @@ test("프라이버시와 학습 범위 계약을 코드에 유지한다", async 
   assert.match(workspace, /화면 단서.*개를 더 찾아요/);
   assert.match(workspace, /confidence === preset\.confidence/);
   assert.doesNotMatch(workspace, /preset\.confidence === ["']plausible["'].*confidence === ["']observable["']/);
+  assert.match(workspace, /learningCase\.presets\[1\] \?\? learningCase\.presets\[0\]/);
+  assert.doesNotMatch(workspace, /useState\(learningCase\.presets\[0\]\.id\)/);
   assert.match(cases, /observable/);
   assert.match(cases, /plausible/);
   assert.match(cases, /overclaim/);
