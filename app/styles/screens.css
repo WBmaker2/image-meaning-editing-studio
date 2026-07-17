@@ -1,5 +1,5 @@
-.welcome-screen { min-height: 710px; width: min(1280px, calc(100% - 48px)); margin: 0 auto; display: grid; grid-template-columns: .92fr 1.08fr; gap: 60px; align-items: center; padding: 54px 0 30px; }
-.hero-copy h1 { font-size: clamp(46px, 5.3vw, 78px); line-height: 1.08; margin-bottom: 26px; }
+.welcome-screen { min-height: 710px; width: min(1280px, calc(100% - 48px)); margin: 0 auto; display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; padding: 54px 0 30px; }
+.hero-copy h1 { font-size: clamp(46px, 4.7vw, 64px); line-height: 1.08; margin-bottom: 26px; }
 .hero-copy h1 em { color: var(--teal); font-style: normal; position: relative; }
 .hero-copy h1 em::after { content: ""; position: absolute; left: 0; right: 0; bottom: -5px; height: 7px; background: var(--amber); opacity: .7; transform: rotate(-1deg); border-radius: 99px; }
 .hero-description { max-width: 600px; font-size: 20px; color: var(--muted); line-height: 1.75; }
