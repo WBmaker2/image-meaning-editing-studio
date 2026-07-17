@@ -9,15 +9,26 @@ export function InfoDialog({ type, onClose }: DialogProps) {
       eyebrow: "작은 기록",
       title: "업데이트 내역",
       body: (
-        <div className="update-entry">
-          <div className="update-meta"><strong>v0.1.0</strong><span>2026.07.17</span></div>
-          <h3>첫 번째 학습실을 열었어요</h3>
-          <ul>
-            <li>자르기·배치·문구·색·종합 편집 사건 5개를 만들었어요.</li>
-            <li>화면에서 바로 확인할 것과 가능한 느낌을 구분해요.</li>
-            <li>실제 친구 사진은 올리지 않고 준비된 학습 장면만 사용해요.</li>
-          </ul>
-        </div>
+        <>
+          <div className="update-entry">
+            <div className="update-meta"><strong>v0.2.0</strong><span>2026.07.17</span></div>
+            <h3>직접 관찰하고 더 정확하게 구분해요</h3>
+            <ul>
+              <li>화면 단서를 하나씩 확인한 뒤 편집을 시작하도록 바꿨어요.</li>
+              <li>직접 확인한 사실과 가능한 느낌의 답 판정을 더 정확하게 다듬었어요.</li>
+              <li>사건 미리보기와 모바일 진행 단계를 알아보기 쉽게 개선했어요.</li>
+            </ul>
+          </div>
+          <div className="update-entry">
+            <div className="update-meta"><strong>v0.1.0</strong><span>2026.07.17</span></div>
+            <h3>첫 번째 학습실을 열었어요</h3>
+            <ul>
+              <li>자르기·배치·문구·색·종합 편집 사건 5개를 만들었어요.</li>
+              <li>화면에서 바로 확인할 것과 가능한 느낌을 구분해요.</li>
+              <li>실제 친구 사진은 올리지 않고 준비된 학습 장면만 사용해요.</li>
+            </ul>
+          </div>
+        </>
       ),
     },
     teacher: {
