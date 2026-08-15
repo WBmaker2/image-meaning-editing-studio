@@ -16,6 +16,7 @@
 
 .visual-label span { font-weight: 900; font-size: 14px; }
 .visual-label small { color: var(--muted); font-size: 11px; }
+.visual-change-note { color: var(--coral); font-weight: 900; }
 
 .scene-window {
   position: relative;

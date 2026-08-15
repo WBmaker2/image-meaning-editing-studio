@@ -1,5 +1,5 @@
 import type { SceneKind } from "../data/cases";
-import { SCENE_IMAGES } from "../data/sceneAssets";
+import { SCENE_IMAGES, VISUAL_CHANGE_NOTES } from "../data/sceneAssets";
 import "../styles/generated-scenes.css";
 
 interface SceneIllustrationProps {
@@ -59,9 +59,16 @@ function SceneOverlay({ scene }: { scene: SceneKind }) {
 }
 
 export function SceneIllustration({ scene, variant, alt, caption, label }: SceneIllustrationProps) {
+  const changeNote = VISUAL_CHANGE_NOTES[variant] ?? "달라진 점을 찾아요";
+
   return (
     <figure className={`visual-card visual-${variant}`}>
-      <div className="visual-label"><span>{label}</span><small>{variant === "wide" ? "기준 범위" : "현재 선택"}</small></div>
+      <div className="visual-label">
+        <span>{label}</span>
+        <small>
+          {variant === "wide" ? "기준 범위" : <>현재 선택 · <b className="visual-change-note">{changeNote}</b></>}
+        </small>
+      </div>
       <div className="scene-window" role="img" aria-label={alt}>
         <div className={`scene scene-${scene}`}>
           {/* Native img keeps the same asset path for Next and the GitHub Pages build. */}

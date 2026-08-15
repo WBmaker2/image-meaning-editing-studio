@@ -141,7 +141,7 @@ export const CASES: LearningCase[] = [
     objects: ["가위 기호", "풀 기호", "색종이 기호", "준비물 글"],
     baselineCaption: "오늘의 준비물",
     presets: [
-      { id: "original", label: "원래 색", variant: "color-original", summary: "밝은 바탕과 짙은 글자, 서로 다른 도구 색을 유지합니다.", acceptedChanges: ["same-structure"], acceptedEffects: ["clear-items"], acceptedEvidence: ["contrast", "labels"], confidence: "observable", caution: "원래 색도 화면과 빛에 따라 다르게 보일 수 있어요." },
+      { id: "original", label: "원래 색", variant: "color-original", summary: "처음 이미지와 같은 색을 그대로 유지합니다. 색은 바뀌지 않아요.", acceptedChanges: ["same-structure"], acceptedEffects: ["clear-items"], acceptedEvidence: ["contrast", "labels"], confidence: "observable", caution: "원래 색도 화면과 빛에 따라 다르게 보일 수 있어요." },
       { id: "muted", label: "옅고 차분한 색", variant: "color-muted", summary: "전체 색이 옅고 회색에 가까워집니다.", acceptedChanges: ["color-muted"], acceptedEffects: ["calm"], acceptedEvidence: ["saturation"], confidence: "plausible", caution: "차분함 대신 흐릿하다고 느끼는 사람도 있어요." },
       { id: "contrast", label: "차이를 또렷하게", variant: "color-contrast", summary: "바탕과 글자·기호의 밝기 차이가 커집니다.", acceptedChanges: ["contrast-up"], acceptedEffects: ["readable", "clear-items"], acceptedEvidence: ["contrast", "labels"], confidence: "observable", caution: "너무 강한 대비는 피곤하게 느껴질 수 있어요." },
       { id: "low-contrast", label: "글자가 흐린 고쳐 보기", variant: "color-low", summary: "밝은 바탕과 글자의 밝기가 비슷해 읽기 어렵습니다.", acceptedChanges: ["contrast-down"], acceptedEffects: ["hard-read"], acceptedEvidence: ["contrast"], confidence: "observable", caution: "글자가 잘 보이도록 다른 색으로 고쳐야 기록할 수 있어요.", blocksCompletion: true },

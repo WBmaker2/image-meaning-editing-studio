@@ -11,6 +11,15 @@ export function InfoDialog({ type, onClose }: DialogProps) {
       body: (
         <>
           <div className="update-entry">
+            <div className="update-meta"><strong>v0.6.0</strong><span>2026.08.16</span></div>
+            <h3>달라진 점을 한눈에 찾아요</h3>
+            <ul>
+              <li>비교 카드에 “어디를 볼까요?” 단서를 넣어 처음 이미지와 바꾼 이미지를 쉽게 찾도록 했어요.</li>
+              <li>나눔함·준비물·안내판의 크기·자리·색 차이를 더 크게 보여 줘요.</li>
+              <li>사진이나 색이 그대로인 선택지는 “그대로”라고 알려 주어 헷갈리지 않게 했어요.</li>
+            </ul>
+          </div>
+          <div className="update-entry">
             <div className="update-meta"><strong>v0.5.0</strong><span>2026.08.16</span></div>
             <h3>처음부터 생성 이미지를 만나요</h3>
             <ul>
