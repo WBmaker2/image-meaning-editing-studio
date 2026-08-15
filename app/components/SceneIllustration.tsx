@@ -1,4 +1,5 @@
 import type { SceneKind } from "../data/cases";
+import { SCENE_IMAGES } from "../data/sceneAssets";
 import "../styles/generated-scenes.css";
 
 interface SceneIllustrationProps {
@@ -8,14 +9,6 @@ interface SceneIllustrationProps {
   caption?: string;
   label: string;
 }
-
-const SCENE_IMAGES: Record<SceneKind, string> = {
-  playground: "learning-scenes/rain-bench.png",
-  hallway: "learning-scenes/hallway-sign.png",
-  garden: "learning-scenes/garden-caption.png",
-  supplies: "learning-scenes/supply-sign.png",
-  sharebox: "learning-scenes/share-box.png",
-};
 
 function PlaygroundOverlay() {
   return (

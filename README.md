@@ -11,10 +11,11 @@
 ## 학습 이미지
 
 - `public/learning-scenes/`에 이미지 생성 모델로 만든 5개의 고정 학습 장면이 있습니다.
+- 홈 소개 영역, 사건 카드, 사건을 연 뒤의 큰 비교 화면이 같은 생성 장면 자산을 함께 사용합니다.
 - 장면은 인물·얼굴·상표·학교명·임의 글자 없이 구성했습니다.
 - 안내 글과 이름표는 생성 이미지에 맡기지 않고 HTML 오버레이로 보여 주어 학생이 정확하게 읽을 수 있습니다.
 - 자르기·크기·자리·색 변화는 기존 학습 프리셋이 결정적으로 적용됩니다.
-- 생성 목적과 관찰 목표는 `docs/2026-08-15-generated-learning-images-plan.md`, 자산 기록은 `docs/asset-rights-ledger.md`에 남겼습니다.
+- 생성 목적과 관찰 목표는 `docs/2026-08-15-generated-learning-images-plan.md`, 홈·카드 교체 계획은 `docs/2026-08-16-replace-css-drawings-plan.md`, 자산 기록은 `docs/asset-rights-ledger.md`에 남겼습니다.
 
 ## 안전과 개인정보
 

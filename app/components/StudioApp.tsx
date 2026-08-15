@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { CASES, type LearningCase } from "../data/cases";
+import { SCENE_IMAGES } from "../data/sceneAssets";
 import { InfoDialog } from "./Dialogs";
 import { Workspace, type ReportEntry } from "./Workspace";
 
@@ -62,11 +63,18 @@ export function StudioApp() {
             <div className="lab-note note-one">무엇이 남았나요?</div>
             <div className="lab-note note-two">무엇이 먼저 보이나요?</div>
             <div className="photo-sheet sheet-wide">
-              <div className="mini-scene"><span className="mini-sun" /><span className="mini-bench" /><span className="mini-umbrella">⌁</span></div>
+              <div className="hero-scene-frame hero-scene-wide-frame">
+                {/* Native img keeps the same asset path for Next and the GitHub Pages build. */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img className="hero-scene-image hero-scene-wide" src={SCENE_IMAGES.playground} alt="비가 그친 운동장 벤치와 접힌 우산" />
+              </div>
               <strong>주변까지 넓게</strong><small>운동장 · 벤치 · 우산</small>
             </div>
             <div className="photo-sheet sheet-close">
-              <div className="mini-scene close"><span className="mini-bench" /></div>
+              <div className="hero-scene-frame hero-scene-close-frame">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img className="hero-scene-image hero-scene-close" src={SCENE_IMAGES.playground} alt="벤치를 가까이 자른 장면" />
+              </div>
               <strong>벤치를 중심으로</strong><small>벤치가 더 크게 보여요</small>
             </div>
             <div className="comparison-arrow">↔</div>
@@ -110,7 +118,10 @@ export function StudioApp() {
               return (
                 <article className={`case-card focus-${learningCase.number}`} key={learningCase.id}>
                   <div className="case-card-top"><span className="case-number">0{learningCase.number}</span><span className="focus-chip">{learningCase.focus}</span></div>
-                  <div className={`case-thumbnail thumb-${learningCase.scene}`} aria-hidden="true"><span className="thumb-illustration"><i /><i /><i /></span></div>
+                  <div className="case-thumbnail" aria-hidden="true">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img className="case-thumbnail-image" src={SCENE_IMAGES[learningCase.scene]} alt="" loading="lazy" decoding="async" />
+                  </div>
                   <h2>{learningCase.title}</h2><p>{learningCase.mission}</p>
                   <div className="case-card-bottom"><button onClick={() => openCase(learningCase)}>{complete ? "다시 살펴보기" : "사건 열기"} <span>→</span></button>{complete && <span className="complete-mark">✓ 기록됨</span>}</div>
                 </article>

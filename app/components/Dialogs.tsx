@@ -11,6 +11,15 @@ export function InfoDialog({ type, onClose }: DialogProps) {
       body: (
         <>
           <div className="update-entry">
+            <div className="update-meta"><strong>v0.5.0</strong><span>2026.08.16</span></div>
+            <h3>처음부터 생성 이미지를 만나요</h3>
+            <ul>
+              <li>홈 소개 장면과 사건 카드도 실제 학습 장면 이미지로 바꿨어요.</li>
+              <li>큰 비교 화면과 카드가 같은 장면을 가리키도록 자산을 한곳에서 관리해요.</li>
+              <li>기존 CSS 도형 그림을 정리하고 휴대폰에서도 이미지가 잘 보이게 했어요.</li>
+            </ul>
+          </div>
+          <div className="update-entry">
             <div className="update-meta"><strong>v0.4.0</strong><span>2026.08.15</span></div>
             <h3>실제 장면을 보며 관찰해요</h3>
             <ul>

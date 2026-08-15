@@ -1,4 +1,29 @@
 /* AI-generated classroom scenes replace the old CSS-only drawings. */
+.hero-scene-image,
+.case-thumbnail-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-scene-frame { position: relative; height: 240px; overflow: hidden; }
+.hero-scene-close-frame { height: 190px; }
+
+.hero-scene-close {
+  object-position: 34% 58%;
+  transform: scale(1.78);
+}
+
+.case-thumbnail-image {
+  object-position: center;
+  transition: transform .25s ease;
+}
+
+.case-card:hover .case-thumbnail-image {
+  transform: scale(1.05);
+}
+
 .scene-image {
   position: absolute;
   inset: 0;
@@ -118,6 +143,8 @@
 .visual-share-sort .scene-sharebox .share-labels span { font-size: 19px; border: 3px solid var(--teal); background: #fff; }
 
 @media (max-width: 600px) {
+  .hero-scene-frame { height: 155px; }
+  .hero-scene-close-frame { height: 125px; }
   .scene-supplies .supply-title { font-size: 24px; }
   .supply-labels, .share-labels { gap: 3%; left: 7%; right: 7%; }
   .supply-labels span, .share-labels span { padding: 3px 4px; font-size: 12px; }
