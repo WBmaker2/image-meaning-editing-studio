@@ -11,6 +11,15 @@ export function InfoDialog({ type, onClose }: DialogProps) {
       body: (
         <>
           <div className="update-entry">
+            <div className="update-meta"><strong>v0.4.0</strong><span>2026.08.15</span></div>
+            <h3>실제 장면을 보며 관찰해요</h3>
+            <ul>
+              <li>5개 학습 사건의 CSS 그림을 이미지 생성 모델로 만든 장면으로 바꿨어요.</li>
+              <li>글자와 이름표는 화면에서 선명하게 읽도록 앱이 직접 보여 줘요.</li>
+              <li>이미지에는 사람·상표·임의 글자를 넣지 않고 관찰할 사물을 크게 담았어요.</li>
+            </ul>
+          </div>
+          <div className="update-entry">
             <div className="update-meta"><strong>v0.3.0</strong><span>2026.07.18</span></div>
             <h3>학생이 더 쉽게 읽고 비교해요</h3>
             <ul>

@@ -12,6 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: base,
     title: "이미지 의미 편집실",
     description: "같은 이미지의 편집 방법과 전달 효과를 비교하는 초등 5~6학년 국어·미술 학습실",
+    icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
     openGraph: {
       title: "이미지 의미 편집실",
       description: "무엇이 더 보이고, 먼저 눈에 띄고, 어떻게 느껴질까요?",
