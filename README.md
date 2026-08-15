@@ -26,3 +26,13 @@ npm test
 ```
 
 상세 설계는 `2026-07-17-image-meaning-editing-studio-mvp.md`를 참고합니다.
+
+## GitHub Pages
+
+이 프로젝트는 브라우저 상태만 사용하는 정적 학습 앱으로 GitHub Pages에서도
+사용할 수 있습니다.
+
+- `npm run build:pages`: GitHub Pages용 정적 사이트 빌드
+- 공개 주소: https://wbmaker2.github.io/image-meaning-editing-studio/
+- 배포 방식: `.github/workflows/deploy-pages.yml`
+- 정적 진입점: `pages/index.html`
