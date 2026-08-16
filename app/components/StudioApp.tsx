@@ -10,9 +10,9 @@ type Screen = "welcome" | "tutorial" | "cases" | "workspace" | "report";
 type DialogType = "updates" | "teacher" | "reading" | null;
 
 const TUTORIAL = [
-  { number: "01", title: "처음 이미지도 골라 보여 준 장면이에요", copy: "사진에는 찍은 자리와 순간, 보이는 범위가 담겨요. 처음 이미지도 주변의 모든 상황을 보여 주지는 않아요.", symbol: "▣" },
-  { number: "02", title: "한 번에 하나씩 바꾸어 봐요", copy: "자르기·크기·글·색을 하나씩 바꾸면 어떤 변화가 느낌과 뜻에 영향을 주었는지 비교하기 쉬워요.", symbol: "↔" },
-  { number: "03", title: "보이는 것과 느낌을 구분해요", copy: "크기가 커진 것은 바로 확인할 수 있지만, 더 쓸쓸하다는 느낌은 사람마다 다를 수 있어요.", symbol: "◒" },
+  { number: "01", title: "처음 이미지도 골라 보여 준 장면이에요", copy: "사진에는 찍은 자리와 순간, 보이는 범위가 담겨요. 처음 이미지도 주변의 모든 상황을 보여 주지는 않아요.", image: SCENE_IMAGES.playground, imageClass: "tutorial-scene-playground", imageAlt: "비가 그친 운동장에 벤치와 접힌 우산이 보이는 장면" },
+  { number: "02", title: "한 번에 하나씩 바꾸어 봐요", copy: "자르기·크기·글·색을 하나씩 바꾸면 어떤 변화가 느낌과 뜻에 영향을 주었는지 비교하기 쉬워요.", image: SCENE_IMAGES.hallway, imageClass: "tutorial-scene-hallway", imageAlt: "복도 안내판에 발 모양 기호와 방향 화살표가 보이는 장면" },
+  { number: "03", title: "보이는 것과 느낌을 구분해요", copy: "크기가 커진 것은 바로 확인할 수 있지만, 더 쓸쓸하다는 느낌은 사람마다 다를 수 있어요.", image: SCENE_IMAGES.garden, imageClass: "tutorial-scene-garden", imageAlt: "학교 텃밭에서 흙 위로 새싹과 물뿌리개가 보이는 장면" },
 ];
 
 export function StudioApp() {
@@ -89,7 +89,11 @@ export function StudioApp() {
           <div className="tutorial-header"><p className="eyebrow">시작 전 짧은 안내</p><h1>이미지를 읽는 세 가지 약속</h1><p>정답을 빨리 찾기보다 화면에서 까닭을 찾는 연습이에요.</p></div>
           <section className="tutorial-card">
             <div className="tutorial-progress" aria-label={`3단계 중 ${tutorialStep + 1}단계`}>{TUTORIAL.map((_, index) => <span key={index} className={index <= tutorialStep ? "active" : ""} />)}</div>
-            <div className="tutorial-symbol" aria-hidden="true">{TUTORIAL[tutorialStep].symbol}</div>
+            <div className="tutorial-symbol">
+              {/* Native img keeps the same generated scene assets as the learning cases. */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className={`tutorial-scene-image ${TUTORIAL[tutorialStep].imageClass}`} src={TUTORIAL[tutorialStep].image} alt={TUTORIAL[tutorialStep].imageAlt} />
+            </div>
             <p className="step-number">약속 {TUTORIAL[tutorialStep].number}</p>
             <h2>{TUTORIAL[tutorialStep].title}</h2>
             <p>{TUTORIAL[tutorialStep].copy}</p>

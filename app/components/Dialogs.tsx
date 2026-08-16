@@ -11,6 +11,15 @@ export function InfoDialog({ type, onClose }: DialogProps) {
       body: (
         <>
           <div className="update-entry">
+            <div className="update-meta"><strong>v0.8.0</strong><span>2026.08.16</span></div>
+            <h3>튜토리얼에서도 실제 장면을 만나요</h3>
+            <ul>
+              <li>세 가지 약속의 기호를 운동장·복도·텃밭 생성 이미지로 바꿨어요.</li>
+              <li>튜토리얼과 사건 활동에서 같은 장면을 다시 만나 학습 내용을 연결해요.</li>
+              <li>이미지 설명을 넣어 화면 읽기 도구에서도 장면을 알 수 있어요.</li>
+            </ul>
+          </div>
+          <div className="update-entry">
             <div className="update-meta"><strong>v0.7.0</strong><span>2026.08.16</span></div>
             <h3>어느 화면에서도 홈으로 돌아가요</h3>
             <ul>
