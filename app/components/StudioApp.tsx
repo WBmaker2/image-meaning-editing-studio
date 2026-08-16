@@ -41,8 +41,9 @@ export function StudioApp() {
           <span className="brand-mark"><i /><i /></span>
           <span><strong>이미지 의미 편집실</strong><small>같은 이미지, 달라지는 느낌과 뜻</small></span>
         </button>
-        <nav className="header-actions" aria-label="도움말">
-          <button className="text-button" onClick={() => setDialog("teacher")}>교사용 안내</button>
+        <nav className="header-actions" aria-label="사이트 메뉴">
+          <button className="text-button home-button" onClick={() => setScreen("welcome")} aria-label="홈 화면으로 이동">홈 화면</button>
+          <button className="text-button teacher-button" onClick={() => setDialog("teacher")}>교사용 안내</button>
           <button className="text-button" onClick={() => setDialog("updates")}><span className="status-dot" /> 업데이트 내역</button>
         </nav>
       </header>

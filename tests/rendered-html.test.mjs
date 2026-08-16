@@ -14,6 +14,7 @@ test("교육용 이미지 의미 편집실을 서버 렌더링한다", async () 
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /이미지 의미 편집실/);
+  assert.match(html, /홈 화면/);
   assert.match(html, /같은 이미지인데/);
   assert.match(html, /실제 친구 사진은 올리지 않아요/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Your site is taking shape/i);

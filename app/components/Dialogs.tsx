@@ -11,6 +11,15 @@ export function InfoDialog({ type, onClose }: DialogProps) {
       body: (
         <>
           <div className="update-entry">
+            <div className="update-meta"><strong>v0.7.0</strong><span>2026.08.16</span></div>
+            <h3>어느 화면에서도 홈으로 돌아가요</h3>
+            <ul>
+              <li>상단 헤더에 `홈 화면` 버튼을 추가했어요.</li>
+              <li>사건을 살펴보다가도 한 번 눌러 첫 화면으로 돌아갈 수 있어요.</li>
+              <li>휴대폰에서는 교사용 안내를 접고 홈 버튼과 업데이트 내역을 보여 줘요.</li>
+            </ul>
+          </div>
+          <div className="update-entry">
             <div className="update-meta"><strong>v0.6.0</strong><span>2026.08.16</span></div>
             <h3>달라진 점을 한눈에 찾아요</h3>
             <ul>
