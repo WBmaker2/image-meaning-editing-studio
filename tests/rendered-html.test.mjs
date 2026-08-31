@@ -16,14 +16,17 @@ test("교육용 이미지 의미 편집실을 서버 렌더링한다", async () 
   assert.match(html, /이미지 의미 편집실/);
   assert.match(html, /홈 화면/);
   assert.match(html, /같은 이미지인데/);
+  assert.match(html, /활동 먼저 보기/);
+  assert.match(html, /gi-pulse/);
   assert.match(html, /실제 친구 사진은 올리지 않아요/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Your site is taking shape/i);
 });
 
 test("프라이버시와 학습 범위 계약을 코드에 유지한다", async () => {
-  const [studio, workspace, cases] = await Promise.all([
+  const [studio, workspace, dialogs, cases] = await Promise.all([
     readFile(new URL("../app/components/StudioApp.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/components/Workspace.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/components/Dialogs.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/data/cases.ts", import.meta.url), "utf8"),
   ]);
   assert.doesNotMatch(studio + workspace, /localStorage|sessionStorage|indexedDB|type=["']file["']/i);
@@ -32,6 +35,9 @@ test("프라이버시와 학습 범위 계약을 코드에 유지한다", async 
   assert.match(studio, /image: SCENE_IMAGES\.playground/);
   assert.match(studio, /image: SCENE_IMAGES\.hallway/);
   assert.match(studio, /image: SCENE_IMAGES\.garden/);
+  assert.match(studio, /goToScreen/);
+  assert.match(studio, /편집 활동 모음/);
+  assert.doesNotMatch(studio, /사건 먼저 둘러보기|편집 사건 보관함|사건 열기/);
   assert.match(workspace, /화면에서 달라진 것을 모두 골라요/);
   assert.match(workspace, /observedObjects/);
   assert.match(workspace, /disabled={!observationComplete}/);
@@ -39,6 +45,11 @@ test("프라이버시와 학습 범위 계약을 코드에 유지한다", async 
   assert.match(workspace, /confidence === preset\.confidence/);
   assert.doesNotMatch(workspace, /preset\.confidence === ["']plausible["'].*confidence === ["']observable["']/);
   assert.match(workspace, /learningCase\.presets\[1\] \?\? learningCase\.presets\[0\]/);
+  assert.match(workspace, /phaseSectionRef/);
+  assert.match(workspace, /moveToPhase\("result"\)/);
+  assert.match(workspace, /aria-pressed/);
+  assert.match(workspace, /gi-pulse/);
+  assert.doesNotMatch(dialogs, /사건 먼저 둘러보기|편집 사건 보관함|사건 열기/);
   assert.doesNotMatch(workspace, /useState\(learningCase\.presets\[0\]\.id\)/);
   assert.match(cases, /observable/);
   assert.match(cases, /plausible/);

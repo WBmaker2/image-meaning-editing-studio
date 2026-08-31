@@ -11,4 +11,5 @@ test("휴대폰에서는 처음 이미지를 한 장씩 보여 준다", async ()
   assert.match(workspace, /const \[showEdited, setShowEdited\] = useState\(false\)/);
   assert.match(workspace, /한 장씩 보기/);
   assert.match(workspace, /지금: \{showEdited \? "바꾼 이미지" : "처음 이미지"\}/);
+  assert.match(workspace, /aria-pressed=\{viewMode === "side"\}/);
 });

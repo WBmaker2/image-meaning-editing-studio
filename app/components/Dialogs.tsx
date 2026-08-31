@@ -1,9 +1,21 @@
+import { useEffect, useRef } from "react";
+
 interface DialogProps {
   type: "updates" | "teacher" | "reading";
   onClose: () => void;
 }
 
 export function InfoDialog({ type, onClose }: DialogProps) {
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    closeButtonRef.current?.focus();
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
+
   const content = {
     updates: {
       eyebrow: "작은 기록",
@@ -11,11 +23,20 @@ export function InfoDialog({ type, onClose }: DialogProps) {
       body: (
         <>
           <div className="update-entry">
+            <div className="update-meta"><strong>v0.9.0</strong><span>2026.08.31</span></div>
+            <h3>다음 활동을 쉽게 찾도록 다듬었어요</h3>
+            <ul>
+              <li>학생 화면에서 `활동`·`처음 이미지`·`바꾼 이미지`처럼 같은 말을 이어 써요.</li>
+              <li>단계가 바뀌면 새 화면이 바로 보이고, 중요한 다음 버튼을 쉽게 찾을 수 있어요.</li>
+              <li>처음 그림과 바꾼 그림에 색 띠와 짧은 설명을 넣었어요.</li>
+            </ul>
+          </div>
+          <div className="update-entry">
             <div className="update-meta"><strong>v0.8.0</strong><span>2026.08.16</span></div>
             <h3>튜토리얼에서도 실제 장면을 만나요</h3>
             <ul>
               <li>세 가지 약속의 기호를 운동장·복도·텃밭 생성 이미지로 바꿨어요.</li>
-              <li>튜토리얼과 사건 활동에서 같은 장면을 다시 만나 학습 내용을 연결해요.</li>
+              <li>튜토리얼과 활동에서 같은 장면을 다시 만나 학습 내용을 연결해요.</li>
               <li>이미지 설명을 넣어 화면 읽기 도구에서도 장면을 알 수 있어요.</li>
             </ul>
           </div>
@@ -24,7 +45,7 @@ export function InfoDialog({ type, onClose }: DialogProps) {
             <h3>어느 화면에서도 홈으로 돌아가요</h3>
             <ul>
               <li>상단 헤더에 `홈 화면` 버튼을 추가했어요.</li>
-              <li>사건을 살펴보다가도 한 번 눌러 첫 화면으로 돌아갈 수 있어요.</li>
+              <li>활동을 살펴보다가도 한 번 눌러 첫 화면으로 돌아갈 수 있어요.</li>
               <li>휴대폰에서는 교사용 안내를 접고 홈 버튼과 업데이트 내역을 보여 줘요.</li>
             </ul>
           </div>
@@ -41,7 +62,7 @@ export function InfoDialog({ type, onClose }: DialogProps) {
             <div className="update-meta"><strong>v0.5.0</strong><span>2026.08.16</span></div>
             <h3>처음부터 생성 이미지를 만나요</h3>
             <ul>
-              <li>홈 소개 장면과 사건 카드도 실제 학습 장면 이미지로 바꿨어요.</li>
+              <li>홈 소개 장면과 활동 카드도 실제 학습 장면 이미지로 바꿨어요.</li>
               <li>큰 비교 화면과 카드가 같은 장면을 가리키도록 자산을 한곳에서 관리해요.</li>
               <li>기존 CSS 도형 그림을 정리하고 휴대폰에서도 이미지가 잘 보이게 했어요.</li>
             </ul>
@@ -50,7 +71,7 @@ export function InfoDialog({ type, onClose }: DialogProps) {
             <div className="update-meta"><strong>v0.4.0</strong><span>2026.08.15</span></div>
             <h3>실제 장면을 보며 관찰해요</h3>
             <ul>
-              <li>5개 학습 사건의 CSS 그림을 이미지 생성 모델로 만든 장면으로 바꿨어요.</li>
+              <li>5개 학습 활동의 CSS 그림을 이미지 생성 모델로 만든 장면으로 바꿨어요.</li>
               <li>글자와 이름표는 화면에서 선명하게 읽도록 앱이 직접 보여 줘요.</li>
               <li>이미지에는 사람·상표·임의 글자를 넣지 않고 관찰할 사물을 크게 담았어요.</li>
             </ul>
@@ -70,14 +91,14 @@ export function InfoDialog({ type, onClose }: DialogProps) {
             <ul>
               <li>화면 단서를 하나씩 확인한 뒤 편집을 시작하도록 바꿨어요.</li>
               <li>직접 확인한 사실과 가능한 느낌의 답 판정을 더 정확하게 다듬었어요.</li>
-              <li>사건 미리보기와 모바일 진행 단계를 알아보기 쉽게 개선했어요.</li>
+              <li>활동 미리보기와 모바일 진행 단계를 알아보기 쉽게 개선했어요.</li>
             </ul>
           </div>
           <div className="update-entry">
             <div className="update-meta"><strong>v0.1.0</strong><span>2026.07.17</span></div>
             <h3>첫 번째 학습실을 열었어요</h3>
             <ul>
-              <li>자르기·자리·글·색을 바꾸는 사건 5개를 만들었어요.</li>
+              <li>자르기·자리·글·색을 바꾸는 활동 5개를 만들었어요.</li>
               <li>화면에서 바로 확인할 것과 가능한 느낌을 구분해요.</li>
               <li>실제 친구 사진은 올리지 않고 준비된 학습 장면만 사용해요.</li>
             </ul>
@@ -114,7 +135,7 @@ export function InfoDialog({ type, onClose }: DialogProps) {
   return (
     <div className="modal-backdrop" role="presentation" onMouseDown={onClose}>
       <section className="modal" role="dialog" aria-modal="true" aria-labelledby="dialog-title" onMouseDown={(event) => event.stopPropagation()}>
-        <div className="modal-heading"><div><p className="eyebrow">{content.eyebrow}</p><h2 id="dialog-title">{content.title}</h2></div><button className="icon-button" onClick={onClose} aria-label={`${content.title} 닫기`}>×</button></div>
+        <div className="modal-heading"><div><p className="eyebrow">{content.eyebrow}</p><h2 id="dialog-title">{content.title}</h2></div><button ref={closeButtonRef} className="icon-button" onClick={onClose} aria-label={`${content.title} 닫기`}>×</button></div>
         {content.body}
         <button className="primary-button full-button" onClick={onClose}>확인했어요</button>
       </section>

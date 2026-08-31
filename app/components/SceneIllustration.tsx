@@ -62,11 +62,11 @@ export function SceneIllustration({ scene, variant, alt, caption, label }: Scene
   const changeNote = VISUAL_CHANGE_NOTES[variant] ?? "달라진 점을 찾아요";
 
   return (
-    <figure className={`visual-card visual-${variant}`}>
+    <figure className={`visual-card visual-${variant} ${variant === "wide" ? "visual-original" : "visual-edited"}`}>
       <div className="visual-label">
         <span>{label}</span>
         <small>
-          {variant === "wide" ? "기준 범위" : <>현재 선택 · <b className="visual-change-note">{changeNote}</b></>}
+          {variant === "wide" ? "처음 범위" : <>바뀐 방법 · <b className="visual-change-note">{changeNote}</b></>}
         </small>
       </div>
       <div className="scene-window" role="img" aria-label={alt}>
